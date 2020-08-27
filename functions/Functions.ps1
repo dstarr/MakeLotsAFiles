@@ -1,4 +1,4 @@
-function Write-1000Files {
+function Copy-1000Files {
 
     param (
         [Parameter(Mandatory=$true)]
@@ -8,14 +8,17 @@ function Write-1000Files {
         [String] $FileExtention,
 
         [Parameter(Mandatory=$true)]
-        [String] $DirectoryPath
+        [String] $DestDirectoryPath,
+
+        [Parameter(Mandatory=$true)]
+        [String] $SrcFilePath
     )
 
     For ($i=1; $i -le 1000; $i++) {
 
         $newBaseFileName = $FileName + "_" + $i + $FileExtention
 
-        New-Item -Path $DirectoryPath -ItemType file -Name $newBaseFileName
+        Copy-Item $SrcFilePath -Destination "$DestDirectoryPath/$newBaseFileName "
     }
 
 }

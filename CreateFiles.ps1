@@ -22,5 +22,5 @@ For ($i=1; $i -le 200; $i++) {
 
     New-Item -Path $newDir -ItemType directory
 
-    Write-1000Files -FileName $fileBaseName -FileExtention $extension -DirectoryPath $newDir
+    Copy-1000Files -SrcFilePath $sourceFilePath -FileName $fileBaseName -FileExtention $extension -DestDirectoryPath $newDir
 }
