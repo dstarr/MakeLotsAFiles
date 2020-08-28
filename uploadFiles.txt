@@ -1,0 +1,10 @@
+# after installing azcopy, use these commands to upload data to a container
+
+# get a SAS token for the container
+az storage container generate-sas --account-name ectestdata --expiry 2021-01-01 --name k200 --permission acdlrw
+
+#replace the SAS token and other values needed then run
+azcopy copy "LOCAL_SOURCE_FOLDER/*" "https://STORAGE_ACCOUNT_NAME.blob.core.windows.net/CONTAINER_NAME/?SAS_TOKEN" --recursive=true
+
+EXAMPLE: azcopy copy "./out/*" "https://ectestdata.blob.core.windows.net/k200/?[SAS_TOKEN]" --recursive=true
+
