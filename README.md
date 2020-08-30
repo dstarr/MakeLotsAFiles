@@ -24,12 +24,5 @@ az storage container generate-sas --account-name STORAGE_ACCOUNT_NAME --expiry 2
 ### replace the SAS token and other values needed then run
 
 ```bash
-azcopy copy "LOCAL_SOURCE_FOLDER/*" "https://STORAGE_ACCOUNT_NAME.blob.core.windows.net/CONTAINER_NAME/?SAS_TOKEN" --recursive=true
-```
-
-**EXAMPLE**
-
-```bash
 azcopy copy "./out/*" "https://myStorageAccount.blob.core.windows.net/myContainer/?[SAS_TOKEN]" --recursive=true
 ```
-
