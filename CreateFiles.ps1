@@ -2,6 +2,7 @@
 
 $sourceFilePath = './sourcefile/covid-positive-demographics.csv'
 $destinationRootDir = './out'
+$startCountForDirectories=1
 $numberOfDirectories = 300
 
 $sourceFile = Get-Item $sourceFilePath
@@ -17,7 +18,7 @@ if(Test-Path -Path $destinationRootDir) {
 }
 
 # make directories and files
-For ($i=1; $i -le $numberOfDirectories; $i++) {
+For ($i=$startCountForDirectories; $i -le $numberOfDirectories; $i++) {
 
     $newDir = "$destinationRootDir/$i"
 
