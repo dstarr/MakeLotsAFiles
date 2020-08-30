@@ -1,7 +1,8 @@
 . "./functions/Functions.ps1"
 
 $sourceFilePath = './sourcefile/covid-positive-demographics.csv'
-$destinationRootDir = './out'
+$destinationRootDir = './out3'
+$numberOfDirectories = 200
 
 $sourceFile = Get-Item $sourceFilePath
 $extension = $sourceFile.Extension
@@ -16,7 +17,7 @@ if(Test-Path -Path $destinationRootDir) {
 }
 
 # make directories and files
-For ($i=1; $i -le 200; $i++) {
+For ($i=1; $i -le $numberOfDirectories; $i++) {
 
     $newDir = "$destinationRootDir/$i"
 
