@@ -1,8 +1,8 @@
 . "./functions/Functions.ps1"
 
 $sourceFilePath = './sourcefile/covid-positive-demographics.csv'
-$destinationRootDir = './out3'
-$numberOfDirectories = 200
+$destinationRootDir = './out'
+$numberOfDirectories = 300
 
 $sourceFile = Get-Item $sourceFilePath
 $extension = $sourceFile.Extension
