@@ -1,24 +1,19 @@
 . "./functions/Functions.ps1"
 
-$sourceFilePath = './sourcefile/covid-positive-demographics.csv'
+$numberOfDirectories = 200
 $destinationRootDir = './out'
-$startCountForDirectories=1
-$numberOfDirectories = 300
+$sourceFilePath = './sourcefile/covid-positive-demographics.csv'
+
+$ErrorActionPreference = "Stop"
 
 $sourceFile = Get-Item $sourceFilePath
 $extension = $sourceFile.Extension
 $fileBaseName = $sourceFile.BaseName
 
-
-# if old out files exists, delete them
-if(Test-Path -Path $destinationRootDir) {
-    Write-Host "Removing Old Directory..."
-    Remove-Item -Path $destinationRootDir -Recurse
-    New-Item -Path $destinationRootDir -ItemType directory
-}
-
+# ----------------------------------
 # make directories and files
-For ($i=$startCountForDirectories; $i -le $numberOfDirectories; $i++) {
+# ----------------------------------
+For ($i=1; $i -le $numberOfDirectories; $i++) {
 
     $newDir = "$destinationRootDir/$i"
 
@@ -26,3 +21,4 @@ For ($i=$startCountForDirectories; $i -le $numberOfDirectories; $i++) {
 
     Copy-1000Files -SrcFilePath $sourceFilePath -FileName $fileBaseName -FileExtention $extension -DestDirectoryPath $newDir
 }
+

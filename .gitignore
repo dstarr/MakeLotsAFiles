@@ -2,3 +2,4 @@
 .DS_Store
 out*/
 ListAllBlobsFromStorageTest.ps1
+notes.txt

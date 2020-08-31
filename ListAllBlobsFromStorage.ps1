@@ -4,8 +4,9 @@
 # -------------------------------------
 $tenant=""
 $subscription=""
-$resourceGroupName=""  
-$storageAccName=""  
+
+$resourceGroupName=""
+$storageAccountName=""
  
 # -------------------------------------
 # Function to get all the containers  
@@ -15,12 +16,15 @@ Function GetAllStorageContainer
     Write-Host -ForegroundColor Green "Retrieving storage container.."      
 
     # Get the storage account from which container has to be retrieved  
-    $storageAcc = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccName      
+    Write-Host "New-AzStorageAccount" -StorageAccountName 
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName    
     
     # Get the storage account context  
-    $ctx = $storageAcc.Context  
+    Write-Host "Get Storage Account Context"
+    $ctx = $storageAccount.Context  
     
     # List all the containers  
+    Write-Host "Get-AzStorageContainer"
     $containers = Get-AzStorageContainer -Context $ctx   
     
     foreach($container in $containers)  
@@ -28,8 +32,9 @@ Function GetAllStorageContainer
         Write-Host -ForegroundColor Yellow $container.Name  
     }  
 }   
+  
 
-# comment this out if you want to just login on your command line
+# Comment out the following line if you are already logged in
 Connect-AzAccount -Tenant $tenant -Subscription $subscription
 
 GetAllStorageContainer
